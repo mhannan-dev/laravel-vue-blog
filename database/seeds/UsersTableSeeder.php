@@ -1,6 +1,6 @@
 <?php
 
-use App\Models\User;
+use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -16,8 +16,9 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->delete();
         $usersRecord = [
             [
-                'id'=> 1, 'name'=> 'M Hannan','email'=>'admin@admin.com', 'type'=>'admin','bio'=>'Bio data','password'=>Hash::make('12345678'), 'photo'=>'default.png'
-            ]
+                'name'=> 'M Hannan', 'email'=>'admin@admin.com','password'=>Hash::make('12345678')
+            ],
+
 
         ];
         DB::table('users')->insert($usersRecord);

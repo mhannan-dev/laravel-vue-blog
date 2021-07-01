@@ -34,6 +34,7 @@ return [
     | Supported: "session", "token"
     |
     */
+
     'guards' => [
         'web' => [
             'driver' => 'session',
@@ -41,7 +42,7 @@ return [
         ],
 
         'api' => [
-            'driver' => 'passport',
+            'driver' => 'token',
             'provider' => 'users',
             'hash' => false,
         ],
@@ -67,7 +68,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Models\User::class,
+            'model' => App\User::class,
         ],
 
         // 'users' => [
