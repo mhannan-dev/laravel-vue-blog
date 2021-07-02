@@ -1,8 +1,14 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 Vue.use(VueRouter);
-import Tags from "../pages/index.vue";
+//  Tag
+import Tags from "../pages/Tag/index.vue";
+import AddTag from "../pages/Tag/add.vue";
+import EditTag from "../pages/Tag/edit.vue";
 
+
+// Category
+import Categories from "../pages/Category/index.vue";
 // Register route array
 const routes = new VueRouter({
     mode: "history",
@@ -11,7 +17,24 @@ const routes = new VueRouter({
             path: "/tags",
             component: Tags,
             name: "tags"
-        }
+        },
+        {
+            path: "/add-tag",
+            component: AddTag,
+            name: "add-tag"
+        },
+        {
+            path: "/edit-tag",
+            component: EditTag,
+            name: "edit-tag"
+        },
+
+        {
+            path: "/categories",
+            component: Categories,
+            name: "categories"
+        },
+
     ]
 });
 export default routes;
