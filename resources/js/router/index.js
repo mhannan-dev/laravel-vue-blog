@@ -1,15 +1,16 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 Vue.use(VueRouter);
-import Tag from '../pages/TagList.vue'
+import Tags from "../pages/index.vue";
 
 // Register route array
 const routes = new VueRouter({
     mode: "history",
-    routes: [{
+    routes: [
+        {
             path: "/tags",
-            component: Tag,
-            name: 'tags'
+            component: Tags,
+            name: "tags"
         }
     ]
 });

@@ -1,10 +1,11 @@
 <?php
 
-use App\Models\User;
+use App\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
-class UsersTableSeeder extends Seeder
+class UserSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -16,9 +17,13 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->delete();
         $usersRecord = [
             [
-                'id'=> 1, 'name'=> 'M Hannan','email'=>'admin@admin.com', 'type'=>'admin','bio'=>'Bio data','password'=>Hash::make('12345678'), 'photo'=>'default.png'
+                'fullName' => 'M Hannan',
+                'email'=> 'user@user.com',
+                'userType'=> 'user',
+                'isActivated'=> '0',
+                'socialType'=> 'socialType',
+                'password'=>Hash::make('12345678'),
             ]
-
         ];
         DB::table('users')->insert($usersRecord);
     }
