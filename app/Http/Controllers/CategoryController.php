@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
-use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -15,8 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all()->toArray();
-        return response()->json($categories, 200);
+        //
     }
 
     /**
@@ -37,15 +35,7 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'name' => 'required|unique:categories|max:255',
-        ]);
-
-        $category = Category::create([
-            'name' => $request->name,
-            'slug' =>  Str::slug($request->name),
-        ]);
-        return response()->json($category, 200);
+        //
     }
 
     /**
@@ -65,16 +55,9 @@ class CategoryController extends Controller
      * @param  \App\Models\Category  $category
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {   //dd($category);
-        $category = Category::findOrFail($id);
-        
-        if ($category) {
-            return response()->json($category, 200);
-        } else {
-            return response()->json('failed', 404);
-        }
-        
+    public function edit(Category $category)
+    {
+        //
     }
 
     /**

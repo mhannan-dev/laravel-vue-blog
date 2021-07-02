@@ -14,8 +14,14 @@ class CategorySeeder extends Seeder
     {
         $categoryRecord = [
             [
-                'name' => 'Electronic',
-                'slug' => 'electronic'
+                'title' => 'Framework',
+                'slug' => 'framework',
+                'icon_image' => 'default.png'
+            ],
+            [
+                'title' => 'Database',
+                'slug' => 'database',
+                'icon_image' => 'default.png'
             ]
         ];
         Category::insert($categoryRecord);
