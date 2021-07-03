@@ -4,8 +4,8 @@
             <div class="card mt-2">
                 <div class="card-header">
                     <h3 class="card-title">Categories</h3>
-                    <router-link to="/category-create" class="btn btn-primary btn-sm float-right">
-                        <i class="fa fa-plus-circle" aria-hidden="true"></i> Category
+                    <router-link to="/blog-create" class="btn btn-primary btn-sm float-right">
+                        <i class="fa fa-plus-circle" aria-hidden="true"></i> Blog
                     </router-link>
                 </div>
                 <!-- /.card-header -->

@@ -1922,22 +1922,78 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
       //input form name or any name but v-model will same
-      categoryForm: new Form({
-        title: '',
-        image: ''
+      blogForm: new Form({
+        title: "",
+        description: "",
+        image: ""
       })
     };
   },
   methods: {
-    createCategory: function createCategory() {
+    createBlog: function createBlog() {
       var _this = this;
 
-      this.categoryForm.post('/api/category', {
+      this.blogForm.Blog("/api/Blog", {
         transformRequest: [function (data, headers) {
           return (0,object_to_formdata__WEBPACK_IMPORTED_MODULE_0__.objectToFormData)(data);
         }],
@@ -1948,18 +2004,18 @@ __webpack_require__.r(__webpack_exports__);
       }).then(function (_ref) {
         var data = _ref.data;
 
-        _this.categoryForm.reset();
+        _this.blogForm.reset();
 
         _this.$toast.success({
-          title: 'Success!',
-          message: 'Category saved successfully.'
+          title: "Success!",
+          message: "Blog saved successfully."
         });
       });
     },
     onImageChange: function onImageChange(e) {
       var file = e.target.files[0]; // Do some client side validation...
 
-      this.categoryForm.image = file;
+      this.blogForm.image = file;
     }
   }
 });
@@ -44212,9 +44268,7 @@ var render = function() {
       _c("div", { staticClass: "row" }, [
         _c("div", { staticClass: "offset-md-1 col-md-10 offset-md-1" }, [
           _c("div", { staticClass: "card mt-2" }, [
-            _c("div", { staticClass: "card-header" }, [
-              _vm._v("Category Form")
-            ]),
+            _c("div", { staticClass: "card-header" }, [_vm._v("Blog Form")]),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
               _c(
@@ -44223,17 +44277,17 @@ var render = function() {
                   on: {
                     submit: function($event) {
                       $event.preventDefault()
-                      return _vm.createCategory()
+                      return _vm.createBlog()
                     },
                     keydown: function($event) {
-                      return _vm.categoryForm.onKeydown($event)
+                      return _vm.blogForm.onKeydown($event)
                     }
                   }
                 },
                 [
                   _c("div", { staticClass: "form-group" }, [
                     _c("label", { attrs: { for: "title" } }, [
-                      _vm._v("Category name")
+                      _vm._v("Post heading")
                     ]),
                     _vm._v(" "),
                     _c("input", {
@@ -44241,41 +44295,137 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.categoryForm.title,
-                          expression: "categoryForm.title"
+                          value: _vm.blogForm.title,
+                          expression: "blogForm.title"
                         }
                       ],
                       staticClass: "form-control",
                       class: {
-                        "is-invalid": _vm.categoryForm.errors.has("title")
+                        "is-invalid": _vm.blogForm.errors.has("title")
                       },
                       attrs: {
                         type: "text",
                         id: "title",
                         name: "title",
-                        placeholder: "Category name"
+                        placeholder: "Blog title"
                       },
-                      domProps: { value: _vm.categoryForm.title },
+                      domProps: { value: _vm.blogForm.title },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.blogForm, "title", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.blogForm.errors.has("title")
+                      ? _c("div", {
+                          staticClass: "text-danger",
+                          domProps: {
+                            innerHTML: _vm._s(_vm.blogForm.errors.get("title"))
+                          }
+                        })
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "meta_desc" } }, [
+                      _vm._v("Meta Description")
+                    ]),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.blogForm.meta_desc,
+                          expression: "blogForm.meta_desc"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.blogForm.errors.has("meta_desc")
+                      },
+                      attrs: {
+                        id: "meta_desc",
+                        name: "meta_desc",
+                        rows: "3",
+                        placeholder: "Blog Description"
+                      },
+                      domProps: { value: _vm.blogForm.meta_desc },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
                           _vm.$set(
-                            _vm.categoryForm,
-                            "title",
+                            _vm.blogForm,
+                            "meta_desc",
                             $event.target.value
                           )
                         }
                       }
                     }),
                     _vm._v(" "),
-                    _vm.categoryForm.errors.has("title")
+                    _vm.blogForm.errors.has("description")
                       ? _c("div", {
                           staticClass: "text-danger",
                           domProps: {
                             innerHTML: _vm._s(
-                              _vm.categoryForm.errors.get("title")
+                              _vm.blogForm.errors.get("description")
+                            )
+                          }
+                        })
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group" }, [
+                    _c("label", { attrs: { for: "meta_desc" } }, [
+                      _vm._v("Description")
+                    ]),
+                    _vm._v(" "),
+                    _c("textarea", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.blogForm.meta_desc,
+                          expression: "blogForm.meta_desc"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.blogForm.errors.has("meta_desc")
+                      },
+                      attrs: {
+                        id: "meta_desc",
+                        name: "meta_desc",
+                        rows: "3",
+                        placeholder: "Blog Description"
+                      },
+                      domProps: { value: _vm.blogForm.meta_desc },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.blogForm,
+                            "meta_desc",
+                            $event.target.value
+                          )
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.blogForm.errors.has("description")
+                      ? _c("div", {
+                          staticClass: "text-danger",
+                          domProps: {
+                            innerHTML: _vm._s(
+                              _vm.blogForm.errors.get("description")
                             )
                           }
                         })
@@ -44288,19 +44438,17 @@ var render = function() {
                     _c("input", {
                       staticClass: "form-control-file",
                       class: {
-                        "is-invalid": _vm.categoryForm.errors.has("image")
+                        "is-invalid": _vm.blogForm.errors.has("image")
                       },
                       attrs: { type: "file" },
                       on: { change: _vm.onImageChange }
                     }),
                     _vm._v(" "),
-                    _vm.categoryForm.errors.has("image")
+                    _vm.blogForm.errors.has("image")
                       ? _c("div", {
                           staticClass: "text-danger",
                           domProps: {
-                            innerHTML: _vm._s(
-                              _vm.categoryForm.errors.get("image")
-                            )
+                            innerHTML: _vm._s(_vm.blogForm.errors.get("image"))
                           }
                         })
                       : _vm._e()
@@ -44501,14 +44649,14 @@ var render = function() {
               "router-link",
               {
                 staticClass: "btn btn-primary btn-sm float-right",
-                attrs: { to: "/category-create" }
+                attrs: { to: "/blog-create" }
               },
               [
                 _c("i", {
                   staticClass: "fa fa-plus-circle",
                   attrs: { "aria-hidden": "true" }
                 }),
-                _vm._v(" Category\n                ")
+                _vm._v(" Blog\n                ")
               ]
             )
           ],

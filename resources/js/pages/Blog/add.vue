@@ -4,47 +4,102 @@
             <div class="row">
                 <div class="offset-md-1 col-md-10 offset-md-1">
                     <div class="card mt-2">
-                        <div class="card-header">Category Form</div>
+                        <div class="card-header">Blog Form</div>
                         <div class="card-body">
                             <form
-                                @submit.prevent="createCategory()"
-                                @keydown="categoryForm.onKeydown($event)"
+                                @submit.prevent="createBlog()"
+                                @keydown="blogForm.onKeydown($event)"
                             >
                                 <div class="form-group">
-                                    <label for="title">Category name</label>
+                                    <label for="title">Post heading</label>
                                     <input
                                         type="text"
                                         class="form-control"
                                         id="title"
                                         name="title"
-                                        v-model="categoryForm.title"
-                                        placeholder="Category name"
+                                        v-model="blogForm.title"
+                                        placeholder="Blog title"
                                         :class="{
-                                            'is-invalid': categoryForm.errors.has(
+                                            'is-invalid': blogForm.errors.has(
                                                 'title'
                                             )
                                         }"
                                     />
-                                    <div class="text-danger"
-                                        v-if="categoryForm.errors.has('title')"
-                                        v-html="categoryForm.errors.get('title')"
+                                    <div
+                                        class="text-danger"
+                                        v-if="blogForm.errors.has('title')"
+                                        v-html="blogForm.errors.get('title')"
                                     />
                                 </div>
+
                                 <div class="form-group">
-                                  <label for="image">Image</label>
-                                  <input
-                                    type="file"
-                                    class="form-control-file"
-                                    @change="onImageChange"
-                                    :class="{ 'is-invalid': categoryForm.errors.has('image') }"
-                                  />
-                                    <div class="text-danger"
+                                    <label for="meta_desc">Meta Description</label>
+                                    <textarea
+                                        class="form-control"
+                                        id="meta_desc"
+                                        name="meta_desc"
+                                        v-model="blogForm.meta_desc"
+                                        rows="3"
+                                        placeholder="Blog Description"
+                                        :class="{
+                                            'is-invalid': blogForm.errors.has(
+                                                'meta_desc'
+                                            )
+                                        }"
+                                    ></textarea>
+                                    <div
+                                        class="text-danger"
                                         v-if="
-                                            categoryForm.errors.has('image')
+                                            blogForm.errors.has('description')
                                         "
                                         v-html="
-                                            categoryForm.errors.get('image')
+                                            blogForm.errors.get('description')
                                         "
+                                    />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="meta_desc">Description</label>
+                                    <textarea
+                                        class="form-control"
+                                        id="meta_desc"
+                                        name="meta_desc"
+                                        v-model="blogForm.meta_desc"
+                                        rows="3"
+                                        placeholder="Blog Description"
+                                        :class="{
+                                            'is-invalid': blogForm.errors.has(
+                                                'meta_desc'
+                                            )
+                                        }"
+                                    ></textarea>
+                                    <div
+                                        class="text-danger"
+                                        v-if="
+                                            blogForm.errors.has('description')
+                                        "
+                                        v-html="
+                                            blogForm.errors.get('description')
+                                        "
+                                    />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="image">Image</label>
+                                    <input
+                                        type="file"
+                                        class="form-control-file"
+                                        @change="onImageChange"
+                                        :class="{
+                                            'is-invalid': blogForm.errors.has(
+                                                'image'
+                                            )
+                                        }"
+                                    />
+                                    <div
+                                        class="text-danger"
+                                        v-if="blogForm.errors.has('image')"
+                                        v-html="blogForm.errors.get('image')"
                                     />
                                 </div>
                                 <button type="submit" class="btn btn-primary">
@@ -59,41 +114,46 @@
     </div>
 </template>
 <script>
-import { objectToFormData } from 'object-to-formdata';
+import { objectToFormData } from "object-to-formdata";
 export default {
     data() {
         return {
             //input form name or any name but v-model will same
-            categoryForm: new Form({
-                title: '',
-                image: ''
+            blogForm: new Form({
+                title: "",
+                description: "",
+                image: ""
             })
         };
     },
     methods: {
-        createCategory(){
-            this.categoryForm.post('/api/category', {
-                transformRequest: [function (data, headers) {
-                    return objectToFormData(data)
-                }],
-                onUploadProgress: e => {
-                    // Do whatever you want with the progress event
-                    console.log(e)
-                }
-            }).then(({ data }) => {
-                this.categoryForm.reset();
-                this.$toast.success({
-                    title:'Success!',
-                    message:'Category saved successfully.'
+        createBlog() {
+            this.blogForm
+                .Blog("/api/Blog", {
+                    transformRequest: [
+                        function(data, headers) {
+                            return objectToFormData(data);
+                        }
+                    ],
+                    onUploadProgress: e => {
+                        // Do whatever you want with the progress event
+                        console.log(e);
+                    }
+                })
+                .then(({ data }) => {
+                    this.blogForm.reset();
+                    this.$toast.success({
+                        title: "Success!",
+                        message: "Blog saved successfully."
+                    });
                 });
-            })
         },
         onImageChange(e) {
-          const file = e.target.files[0];
-          // Do some client side validation...
-          this.categoryForm.image = file;
-        },
-      },
+            const file = e.target.files[0];
+            // Do some client side validation...
+            this.blogForm.image = file;
+        }
+    }
 };
 </script>
 <style></style>
