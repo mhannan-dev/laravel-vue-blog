@@ -61,7 +61,6 @@ export default {
         },
         loadTag(){
             axios.get(`/api/tag/${this.$route.params.id}/edit`).then((response) => {
-                    
                     this.tagForm.title = response.data.title;
                 });
         }

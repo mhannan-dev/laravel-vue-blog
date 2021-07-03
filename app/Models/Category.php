@@ -1,17 +1,13 @@
 <?php
 
 namespace App\Models;
-
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 
 class Category extends Model
 {
     protected $table = 'categories';
-    protected $fillable =
-    [
-        'title', 'slug', 'icon_image', 'created_at','updated_at'
-    ];
+    protected $fillable =['title', 'slug', 'image', 'created_at','updated_at'];
 
     public function setTitleAttribute($value)
     {

@@ -16,6 +16,7 @@
                                 <th style="width: 10px">#</th>
                                 <th>Name</th>
                                 <th>Slug</th>
+                                <th>Icon</th>
                                 <th style="width: 100px">Action</th>
                             </tr>
                         </thead>
@@ -29,9 +30,12 @@
                                      {{ category.slug }}
                                 </td>
                                 <td>
-                                    <a href="" class="btn btn-primary btn-sm">
-                                        <i class="fa fa-edit"></i>
-                                    </a>
+                                    <img :src="category.image" alt="Alt text" style="max-height: 100px; max-width:100px;">
+                                </td>
+                                <td>
+
+                                    <router-link :to="{name: 'edit-category', params: {id: category.id}}" class="btn btn-primary btn-sm"> <i class="fa fa-edit"></i></router-link>
+
                                       <button
                                         class="btn btn-danger btn-sm"
                                         @click="deleteCat(category.id)"

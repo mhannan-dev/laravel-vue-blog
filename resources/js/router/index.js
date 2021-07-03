@@ -10,6 +10,8 @@ import EditTag from "../pages/Tag/edit.vue";
 // Category
 import Categories from "../pages/Category/index.vue";
 import AddCategory from "../pages/Category/add.vue";
+import EditCategory from "../pages/Category/edit.vue";
+
 
 // Register route array
 const routes = new VueRouter({
@@ -39,6 +41,11 @@ const routes = new VueRouter({
             path: "/category-create",
             component: AddCategory,
             name: "category-create"
+        },
+        {
+            path: '/category/edit/:id',
+            component: EditCategory,
+            name: 'edit-category',
         },
 
 

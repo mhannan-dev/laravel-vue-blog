@@ -31,19 +31,19 @@
                                     />
                                 </div>
                                 <div class="form-group">
-                                  <label for="icon_image">Image</label>
+                                  <label for="image">Image</label>
                                   <input
                                     type="file"
                                     class="form-control-file"
                                     @change="onImageChange"
-                                    :class="{ 'is-invalid': categoryForm.errors.has('icon_image') }"
+                                    :class="{ 'is-invalid': categoryForm.errors.has('image') }"
                                   />
                                     <div class="text-danger"
                                         v-if="
-                                            categoryForm.errors.has('icon_image')
+                                            categoryForm.errors.has('image')
                                         "
                                         v-html="
-                                            categoryForm.errors.get('icon_image')
+                                            categoryForm.errors.get('image')
                                         "
                                     />
                                 </div>
@@ -66,7 +66,7 @@ export default {
             //input form name or any name but v-model will same
             categoryForm: new Form({
                 title: '',
-                icon_image: ''
+                image: ''
             })
         };
     },
@@ -91,7 +91,7 @@ export default {
         onImageChange(e) {
           const file = e.target.files[0];
           // Do some client side validation...
-          this.categoryForm.icon_image = file;
+          this.categoryForm.image = file;
         },
       },
 };
