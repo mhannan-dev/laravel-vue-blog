@@ -1993,8 +1993,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -44289,23 +44287,66 @@ var render = function() {
             _c("div", { staticClass: "card-header" }, [_vm._v("Blog Form")]),
             _vm._v(" "),
             _c("div", { staticClass: "card-body" }, [
-              _c(
-                "form",
-                {
-                  on: {
-                    submit: function($event) {
-                      $event.preventDefault()
-                      return _vm.createBlog()
-                    },
-                    keydown: function($event) {
-                      return _vm.blogForm.onKeydown($event)
-                    }
+              _c("form", {
+                on: {
+                  submit: function($event) {
+                    $event.preventDefault()
+                    return _vm.createBlog()
+                  },
+                  keydown: function($event) {
+                    return _vm.blogForm.onKeydown($event)
                   }
-                },
-                [
-                  _c("div", { staticClass: "form-group" }),
+                }
+              }),
+              _vm._v(" "),
+              _c("form", [
+                _c("div", { staticClass: "form-row" }, [
+                  _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c("label", { attrs: { for: "title" } }, [
+                      _vm._v("Post heading")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.blogForm.title,
+                          expression: "blogForm.title"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.blogForm.errors.has("title")
+                      },
+                      attrs: {
+                        type: "text",
+                        id: "title",
+                        name: "title",
+                        placeholder: "Blog title"
+                      },
+                      domProps: { value: _vm.blogForm.title },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.blogForm, "title", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.blogForm.errors.has("title")
+                      ? _c("div", {
+                          staticClass: "text-danger",
+                          domProps: {
+                            innerHTML: _vm._s(_vm.blogForm.errors.get("title"))
+                          }
+                        })
+                      : _vm._e()
+                  ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
+                  _c("div", { staticClass: "form-group col-md-6" }, [
                     _c("label", { attrs: { for: "meta_desc" } }, [
                       _vm._v("Meta Description")
                     ]),
@@ -44356,8 +44397,8 @@ var render = function() {
                       : _vm._e()
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "meta_desc" } }, [
+                  _c("div", { staticClass: "form-group col-md-6" }, [
+                    _c("label", { attrs: { for: "post_desc" } }, [
                       _vm._v("Description")
                     ]),
                     _vm._v(" "),
@@ -44366,21 +44407,21 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model",
-                          value: _vm.blogForm.meta_desc,
-                          expression: "blogForm.meta_desc"
+                          value: _vm.blogForm.post_desc,
+                          expression: "blogForm.post_desc"
                         }
                       ],
                       staticClass: "form-control",
                       class: {
-                        "is-invalid": _vm.blogForm.errors.has("meta_desc")
+                        "is-invalid": _vm.blogForm.errors.has("post_desc")
                       },
                       attrs: {
-                        id: "meta_desc",
-                        name: "meta_desc",
+                        id: "post_desc",
+                        name: "post_desc",
                         rows: "3",
                         placeholder: "Blog Description"
                       },
-                      domProps: { value: _vm.blogForm.meta_desc },
+                      domProps: { value: _vm.blogForm.post_desc },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
@@ -44388,26 +44429,26 @@ var render = function() {
                           }
                           _vm.$set(
                             _vm.blogForm,
-                            "meta_desc",
+                            "post_desc",
                             $event.target.value
                           )
                         }
                       }
                     }),
                     _vm._v(" "),
-                    _vm.blogForm.errors.has("description")
+                    _vm.blogForm.errors.has("post_desc")
                       ? _c("div", {
                           staticClass: "text-danger",
                           domProps: {
                             innerHTML: _vm._s(
-                              _vm.blogForm.errors.get("description")
+                              _vm.blogForm.errors.get("post_desc")
                             )
                           }
                         })
                       : _vm._e()
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "form-group" }, [
+                  _c("div", { staticClass: "form-group col-md-6" }, [
                     _c("label", { attrs: { for: "image" } }, [_vm._v("Image")]),
                     _vm._v(" "),
                     _c("input", {
@@ -44432,69 +44473,17 @@ var render = function() {
                   _c(
                     "button",
                     {
-                      staticClass: "btn btn-primary",
+                      staticClass: "btn btn-primary ml-1",
                       attrs: { type: "submit" }
                     },
                     [
                       _vm._v(
-                        "\n                                Save\n                            "
+                        "\n                                    Save\n                                "
                       )
                     ]
                   )
-                ]
-              ),
-              _vm._v("\n                        ==\n                        "),
-              _c("form", [
-                _c("div", { staticClass: "row" }, [
-                  _c("div", { staticClass: "col" }, [
-                    _c("label", { attrs: { for: "title" } }, [
-                      _vm._v("Post heading")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.blogForm.title,
-                          expression: "blogForm.title"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.blogForm.errors.has("title")
-                      },
-                      attrs: {
-                        type: "text",
-                        id: "title",
-                        name: "title",
-                        placeholder: "Blog title"
-                      },
-                      domProps: { value: _vm.blogForm.title },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.blogForm, "title", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.blogForm.errors.has("title")
-                      ? _c("div", {
-                          staticClass: "text-danger",
-                          domProps: {
-                            innerHTML: _vm._s(_vm.blogForm.errors.get("title"))
-                          }
-                        })
-                      : _vm._e()
-                  ]),
-                  _vm._v(" "),
-                  _vm._m(0)
                 ])
-              ]),
-              _vm._v("\n                        ==\n                    ")
+              ])
             ])
           ])
         ])
@@ -44502,19 +44491,7 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col" }, [
-      _c("input", {
-        staticClass: "form-control",
-        attrs: { type: "text", placeholder: "Last name" }
-      })
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 

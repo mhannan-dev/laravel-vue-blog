@@ -9,121 +9,119 @@
                             <form
                                 @submit.prevent="createBlog()"
                                 @keydown="blogForm.onKeydown($event)"
-                            >
-                                <div class="form-group">
+                            ></form>
 
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="meta_desc"
-                                        >Meta Description</label
-                                    >
-                                    <textarea
-                                        class="form-control"
-                                        id="meta_desc"
-                                        name="meta_desc"
-                                        v-model="blogForm.meta_desc"
-                                        rows="3"
-                                        placeholder="Blog Description"
-                                        :class="{
-                                            'is-invalid': blogForm.errors.has(
-                                                'meta_desc'
-                                            )
-                                        }"
-                                    ></textarea>
-                                    <div
-                                        class="text-danger"
-                                        v-if="
-                                            blogForm.errors.has('description')
-                                        "
-                                        v-html="
-                                            blogForm.errors.get('description')
-                                        "
-                                    />
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="meta_desc">Description</label>
-                                    <textarea
-                                        class="form-control"
-                                        id="meta_desc"
-                                        name="meta_desc"
-                                        v-model="blogForm.meta_desc"
-                                        rows="3"
-                                        placeholder="Blog Description"
-                                        :class="{
-                                            'is-invalid': blogForm.errors.has(
-                                                'meta_desc'
-                                            )
-                                        }"
-                                    ></textarea>
-                                    <div
-                                        class="text-danger"
-                                        v-if="
-                                            blogForm.errors.has('description')
-                                        "
-                                        v-html="
-                                            blogForm.errors.get('description')
-                                        "
-                                    />
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="image">Image</label>
-                                    <input
-                                        type="file"
-                                        class="form-control-file"
-                                        @change="onImageChange"
-                                        :class="{
-                                            'is-invalid': blogForm.errors.has(
-                                                'image'
-                                            )
-                                        }"
-                                    />
-                                    <div
-                                        class="text-danger"
-                                        v-if="blogForm.errors.has('image')"
-                                        v-html="blogForm.errors.get('image')"
-                                    />
-                                </div>
-                                <button type="submit" class="btn btn-primary">
-                                    Save
-                                </button>
-                            </form>
-                            ==
                             <form>
-                                <div class="row">
-                                    <div class="col">
-                                         <label for="title">Post heading</label>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="title"
-                                        name="title"
-                                        v-model="blogForm.title"
-                                        placeholder="Blog title"
-                                        :class="{
-                                            'is-invalid': blogForm.errors.has(
-                                                'title'
-                                            )
-                                        }"
-                                    />
-                                    <div
-                                        class="text-danger"
-                                        v-if="blogForm.errors.has('title')"
-                                        v-html="blogForm.errors.get('title')"
-                                    />
-                                    </div>
-                                    <div class="col">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="title">Post heading</label>
                                         <input
                                             type="text"
                                             class="form-control"
-                                            placeholder="Last name"
+                                            id="title"
+                                            name="title"
+                                            v-model="blogForm.title"
+                                            placeholder="Blog title"
+                                            :class="{
+                                                'is-invalid': blogForm.errors.has(
+                                                    'title'
+                                                )
+                                            }"
+                                        />
+                                        <div
+                                            class="text-danger"
+                                            v-if="blogForm.errors.has('title')"
+                                            v-html="
+                                                blogForm.errors.get('title')
+                                            "
                                         />
                                     </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="meta_desc"
+                                            >Meta Description</label
+                                        >
+                                        <textarea
+                                            class="form-control"
+                                            id="meta_desc"
+                                            name="meta_desc"
+                                            v-model="blogForm.meta_desc"
+                                            rows="3"
+                                            placeholder="Blog Description"
+                                            :class="{
+                                                'is-invalid': blogForm.errors.has(
+                                                    'meta_desc'
+                                                )
+                                            }"
+                                        ></textarea>
+                                        <div
+                                            class="text-danger"
+                                            v-if="
+                                                blogForm.errors.has(
+                                                    'description'
+                                                )
+                                            "
+                                            v-html="
+                                                blogForm.errors.get(
+                                                    'description'
+                                                )
+                                            "
+                                        />
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="post_desc"
+                                            >Description</label
+                                        >
+                                        <textarea
+                                            class="form-control"
+                                            id="post_desc"
+                                            name="post_desc"
+                                            v-model="blogForm.post_desc"
+                                            rows="3"
+                                            placeholder="Blog Description"
+                                            :class="{
+                                                'is-invalid': blogForm.errors.has(
+                                                    'post_desc'
+                                                )
+                                            }"
+                                        ></textarea>
+                                        <div
+                                            class="text-danger"
+                                            v-if="
+                                                blogForm.errors.has('post_desc')
+                                            "
+                                            v-html="
+                                                blogForm.errors.get('post_desc')
+                                            "
+                                        />
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="image">Image</label>
+                                        <input
+                                            type="file"
+                                            class="form-control-file"
+                                            @change="onImageChange"
+                                            :class="{
+                                                'is-invalid': blogForm.errors.has(
+                                                    'image'
+                                                )
+                                            }"
+                                        />
+                                        <div
+                                            class="text-danger"
+                                            v-if="blogForm.errors.has('image')"
+                                            v-html="
+                                                blogForm.errors.get('image')
+                                            "
+                                        />
+                                    </div>
+                                    <button
+                                        type="submit"
+                                        class="btn btn-primary ml-1"
+                                    >
+                                        Save
+                                    </button>
                                 </div>
                             </form>
-                            ==
                         </div>
                     </div>
                 </div>
