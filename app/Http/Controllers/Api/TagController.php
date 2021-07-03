@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers\Api;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Tag;
@@ -61,16 +63,11 @@ class TagController extends Controller
      * @param  \App\Models\Tag  $tag
      * @return \Illuminate\Http\Response
      */
-    public function edit(Tag $tag)
+    public function edit($id)
     {
-        //return response()->json($tag, 200);
-        if ($tag) {
-            return response()->json($tag, 200);
-        } else {
-            return response()->json('failed', 404);
-        }
+        $tag = Tag::find($id);
+        return response()->json($tag, 200);
     }
-
     /**
      * Update the specified resource in storage.
      *

@@ -1,8 +1,9 @@
 <?php
+
 namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Category;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -13,7 +14,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all()->toArray();
+        $categories= Category::latest()->get();
         return response()->json($categories, 200);
     }
 
@@ -35,22 +36,32 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        $validatedData = $request->validate([
-            'title' => 'required|unique:categories|max:255',
+        $this->validate($request, [
+            'title' => 'required|max:255|unique:categories,title',
+            'icon_image' => 'required|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
+
         $category = Category::create([
-            'name' => $request->title,
+            'title' => $request->title,
+            'icon_image' => $request->icon_image
         ]);
+
+        if ($request->icon_image) {
+            $imageName = time() . '_' . uniqid() . '.' . $request->icon_image->getClientOriginalExtension();
+            $request->icon_image->move(public_path('storage/category'), $imageName);
+            $category->icon_image = '/storage/category/' . $imageName;
+            $category->save();
+        }
         return response()->json($category, 200);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Category  $Category
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(Category $Category)
     {
         //
     }
@@ -58,41 +69,64 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Category  $Category
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {   //dd($category);
-        $category = Category::findOrFail($id);
-
-        if ($category) {
-            return response()->json($category, 200);
-        } else {
-            return response()->json('failed', 404);
-        }
-
+    public function edit(Category $Category)
+    {
+        return response()->json($Category, 200);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Category  $category
+     * @param  \App\Category  $Category
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(Request $request, Category $Category)
     {
-        //
+        $this->validate($request, [
+            'title' => "required|max:255|unique:Categorys,title, $Category->id",
+            'icon_image' => 'sometimes|nullable|icon_image|max:2048',
+            'description' => 'required'
+        ]);
+
+        $Category->update([
+            'title' => $request->title,
+            'description' => $request->description
+        ]);
+
+        if ($request->icon_image) {
+            $icon_imageName = time() . '_' . uniqid() . '.' . $request->icon_image->getClientOriginalExtension();
+            $request->icon_image->move(public_path('storage/Category'), $icon_imageName);
+            $Category->icon_image = '/storage/Category/' . $icon_imageName;
+            $Category->save();
+        } else {
+            $icon_imageName = $Category->icon_image;
+        }
+        return response()->json($Category, 200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Category  $category
+     * @param  \App\Category  $Category
      * @return \Illuminate\Http\Response
      */
     public function destroy(Category $category)
     {
-        //
+        // Working  code to delete Category with icon_image
+        if ($category) {
+            $icon_image = $category->icon_image;
+            $imagePath = public_path($icon_image);
+            if ($icon_image && file_exists($imagePath)) {
+                unlink($imagePath);
+            }
+            $category->delete();
+        } else {
+            return response()->json('Category not found.', 404);
+        }
+
     }
 }

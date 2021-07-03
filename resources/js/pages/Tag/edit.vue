@@ -52,8 +52,7 @@ export default {
     },
     methods: {
         updateTag(){
-            let id = this.$route.params.id;
-            this.tagForm.put(`/api/tag/${id}`).then(() => {
+            this.tagForm.put(`/api/tag/${this.$route.params.id}`).then(() => {
                 this.$toast.success({
                     title:'Success!',
                     message:'Tag updated successfully.'
@@ -61,11 +60,14 @@ export default {
             })
         },
         loadTag(){
-            let id = this.$route.params.id;
-            axios.get(`/api/tag/${id}/edit`).then(response => {
-                this.tagForm.title = response.data.title;
-            });
+            axios.get(`/api/tag/${this.$route.params.id}/edit`).then((response) => {
+                    
+                    this.tagForm.title = response.data.title;
+                });
         }
+    },
+    mounted(){
+        this.loadTag();
     }
 };
 </script>

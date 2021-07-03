@@ -41,6 +41,8 @@
                                     :to="{name: 'edit-tag', params: {id: tag.id}}"
                                     ><i class="fa fa-edit"></i>
                                     </router-link>
+
+                                    
                                 </td>
                             </tr>
                         </tbody>

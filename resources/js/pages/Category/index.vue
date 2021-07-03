@@ -4,9 +4,9 @@
             <div class="card mt-2">
                 <div class="card-header">
                     <h3 class="card-title">Categories</h3>
-                    <a href="" class="btn btn-primary btn-sm float-right">
+                    <router-link to="/category-create" class="btn btn-primary btn-sm float-right">
                         <i class="fa fa-plus-circle" aria-hidden="true"></i> Category
-                    </a>
+                    </router-link>
                 </div>
                 <!-- /.card-header -->
                 <div class="card-body">
@@ -29,13 +29,15 @@
                                      {{ category.slug }}
                                 </td>
                                 <td>
-                                    <a href="" class="btn btn-danger btn-sm">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-
                                     <a href="" class="btn btn-primary btn-sm">
                                         <i class="fa fa-edit"></i>
                                     </a>
+                                      <button
+                                        class="btn btn-danger btn-sm"
+                                        @click="deleteCat(category.id)"
+                                    >
+                                         <i class="fa fa-trash"></i>
+                                    </button>
                                 </td>
                             </tr>
                         </tbody>
@@ -73,10 +75,44 @@ export default {
             axios.get("/api/category").then(response => {
                 this.categories = response.data;
             });
+        },
+        deleteCat(id) {
+            Swal.fire({
+                title: "Are you sure?",
+                text: "You won't be able to revert this!",
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+                confirmButtonText: "Yes, delete it!"
+            }).then(result => {
+                if (result.isConfirmed) {
+                    axios.delete("api/category/"+id)
+                        .then(() => {
+                            Swal.fire(
+                                "Deleted!",
+                                "Your file has been deleted.",
+                                "success"
+                            );
+                            Fire.$emit("AfterCreate");
+                        })
+                        .catch(() => {
+                            Swal(
+                                "Failed",
+                                "There was something wrong",
+                                "warning"
+                            );
+                        });
+
+                }
+            });
         }
     },
     mounted() {
         this.loadCategories();
+         Fire.$on("AfterCreate", () => {
+            this.loadCategories();
+        });
     }
 };
 </script>
