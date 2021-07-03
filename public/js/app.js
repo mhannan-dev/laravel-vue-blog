@@ -1977,6 +1977,24 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
@@ -44266,7 +44284,7 @@ var render = function() {
   return _c("div", [
     _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "offset-md-1 col-md-10 offset-md-1" }, [
+        _c("div", { staticClass: "col-md-12" }, [
           _c("div", { staticClass: "card mt-2" }, [
             _c("div", { staticClass: "card-header" }, [_vm._v("Blog Form")]),
             _vm._v(" "),
@@ -44285,50 +44303,7 @@ var render = function() {
                   }
                 },
                 [
-                  _c("div", { staticClass: "form-group" }, [
-                    _c("label", { attrs: { for: "title" } }, [
-                      _vm._v("Post heading")
-                    ]),
-                    _vm._v(" "),
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.blogForm.title,
-                          expression: "blogForm.title"
-                        }
-                      ],
-                      staticClass: "form-control",
-                      class: {
-                        "is-invalid": _vm.blogForm.errors.has("title")
-                      },
-                      attrs: {
-                        type: "text",
-                        id: "title",
-                        name: "title",
-                        placeholder: "Blog title"
-                      },
-                      domProps: { value: _vm.blogForm.title },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
-                          }
-                          _vm.$set(_vm.blogForm, "title", $event.target.value)
-                        }
-                      }
-                    }),
-                    _vm._v(" "),
-                    _vm.blogForm.errors.has("title")
-                      ? _c("div", {
-                          staticClass: "text-danger",
-                          domProps: {
-                            innerHTML: _vm._s(_vm.blogForm.errors.get("title"))
-                          }
-                        })
-                      : _vm._e()
-                  ]),
+                  _c("div", { staticClass: "form-group" }),
                   _vm._v(" "),
                   _c("div", { staticClass: "form-group" }, [
                     _c("label", { attrs: { for: "meta_desc" } }, [
@@ -44467,7 +44442,59 @@ var render = function() {
                     ]
                   )
                 ]
-              )
+              ),
+              _vm._v("\n                        ==\n                        "),
+              _c("form", [
+                _c("div", { staticClass: "row" }, [
+                  _c("div", { staticClass: "col" }, [
+                    _c("label", { attrs: { for: "title" } }, [
+                      _vm._v("Post heading")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.blogForm.title,
+                          expression: "blogForm.title"
+                        }
+                      ],
+                      staticClass: "form-control",
+                      class: {
+                        "is-invalid": _vm.blogForm.errors.has("title")
+                      },
+                      attrs: {
+                        type: "text",
+                        id: "title",
+                        name: "title",
+                        placeholder: "Blog title"
+                      },
+                      domProps: { value: _vm.blogForm.title },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(_vm.blogForm, "title", $event.target.value)
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _vm.blogForm.errors.has("title")
+                      ? _c("div", {
+                          staticClass: "text-danger",
+                          domProps: {
+                            innerHTML: _vm._s(_vm.blogForm.errors.get("title"))
+                          }
+                        })
+                      : _vm._e()
+                  ]),
+                  _vm._v(" "),
+                  _vm._m(0)
+                ])
+              ]),
+              _vm._v("\n                        ==\n                    ")
             ])
           ])
         ])
@@ -44475,7 +44502,19 @@ var render = function() {
     ])
   ])
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col" }, [
+      _c("input", {
+        staticClass: "form-control",
+        attrs: { type: "text", placeholder: "Last name" }
+      })
+    ])
+  }
+]
 render._withStripped = true
 
 

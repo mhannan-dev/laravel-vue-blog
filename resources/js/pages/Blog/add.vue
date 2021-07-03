@@ -2,7 +2,7 @@
     <div>
         <div class="container">
             <div class="row">
-                <div class="offset-md-1 col-md-10 offset-md-1">
+                <div class="col-md-12">
                     <div class="card mt-2">
                         <div class="card-header">Blog Form</div>
                         <div class="card-body">
@@ -11,29 +11,13 @@
                                 @keydown="blogForm.onKeydown($event)"
                             >
                                 <div class="form-group">
-                                    <label for="title">Post heading</label>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        id="title"
-                                        name="title"
-                                        v-model="blogForm.title"
-                                        placeholder="Blog title"
-                                        :class="{
-                                            'is-invalid': blogForm.errors.has(
-                                                'title'
-                                            )
-                                        }"
-                                    />
-                                    <div
-                                        class="text-danger"
-                                        v-if="blogForm.errors.has('title')"
-                                        v-html="blogForm.errors.get('title')"
-                                    />
+
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="meta_desc">Meta Description</label>
+                                    <label for="meta_desc"
+                                        >Meta Description</label
+                                    >
                                     <textarea
                                         class="form-control"
                                         id="meta_desc"
@@ -106,6 +90,40 @@
                                     Save
                                 </button>
                             </form>
+                            ==
+                            <form>
+                                <div class="row">
+                                    <div class="col">
+                                         <label for="title">Post heading</label>
+                                    <input
+                                        type="text"
+                                        class="form-control"
+                                        id="title"
+                                        name="title"
+                                        v-model="blogForm.title"
+                                        placeholder="Blog title"
+                                        :class="{
+                                            'is-invalid': blogForm.errors.has(
+                                                'title'
+                                            )
+                                        }"
+                                    />
+                                    <div
+                                        class="text-danger"
+                                        v-if="blogForm.errors.has('title')"
+                                        v-html="blogForm.errors.get('title')"
+                                    />
+                                    </div>
+                                    <div class="col">
+                                        <input
+                                            type="text"
+                                            class="form-control"
+                                            placeholder="Last name"
+                                        />
+                                    </div>
+                                </div>
+                            </form>
+                            ==
                         </div>
                     </div>
                 </div>
