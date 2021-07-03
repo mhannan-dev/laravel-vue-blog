@@ -11,6 +11,11 @@ import EditTag from "../pages/Tag/edit.vue";
 import Categories from "../pages/Category/index.vue";
 import AddCategory from "../pages/Category/add.vue";
 import EditCategory from "../pages/Category/edit.vue";
+// Blogs
+import Blogs from "../pages/Blog/index.vue";
+import AddBlog from "../pages/Blog/add.vue";
+import EditBlog from "../pages/Blog/edit.vue";
+
 
 
 // Register route array
@@ -46,6 +51,22 @@ const routes = new VueRouter({
             path: '/category/edit/:id',
             component: EditCategory,
             name: 'edit-category',
+        },
+        //Blogs
+        {
+            path: "/blogs",
+            component: Blogs,
+            name: "blogs"
+        },
+        {
+            path: "/blog-create",
+            component: AddBlog,
+            name: "blog-create"
+        },
+        {
+            path: '/blog/edit/:id',
+            component: EditBlog,
+            name: 'edit-blog',
         },
 
 

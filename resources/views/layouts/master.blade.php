@@ -91,6 +91,14 @@
                                 </p>
                             </router-link>
                         </li>
+                        <li class="nav-item">
+                            <router-link to="/blogs" class="nav-link">
+                                <i class="nav-icon fas fa-tachometer-alt green"></i>
+                                <p>
+                                    Blogs
+                                </p>
+                            </router-link>
+                        </li>
 
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
