@@ -16,12 +16,19 @@ import Blogs from "../pages/Blog/index.vue";
 import AddBlog from "../pages/Blog/add.vue";
 import EditBlog from "../pages/Blog/edit.vue";
 
-
-
+//Test Vuex
+import useComp from '../vuex/useComp'
 // Register route array
 const routes = new VueRouter({
     mode: "history",
     routes: [
+        //Test
+        {
+            path: "/testVuex",
+            component: useComp,
+            name: "te"
+        },
+        //Test
         {
             path: "/tags",
             component: Tags,

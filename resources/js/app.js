@@ -6,6 +6,8 @@
 require('./bootstrap');
 window.Vue = require('vue').default;
 import Vue from 'vue';
+//Vuex
+import store from './store';
 //Router
 import routes from './router/index';
 import VueProgressBar from 'vue-progressbar'
@@ -44,5 +46,6 @@ window.Fire =  new Vue();
 
 const app = new Vue({
     el: '#app',
-    router: routes
+    router: routes,
+    store
 });
